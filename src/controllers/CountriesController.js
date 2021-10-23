@@ -39,9 +39,22 @@ module.exports = {
         // await page.screenshot({path: 'example.png'});
 
         const pageContent = await page.evaluate(() => {
-            return document.getElementsByClassName("VQF4g")[0].innerHTML +
-            document.getElementsByClassName("wob_t")[0].innerHTML  + " Cº " +
-            document.getElementsByClassName("wtsRwe")[0].innerHTML;
+            return `<table>
+                      <tr>
+                        <td>${document.getElementsByClassName("VQF4g")[0].innerHTML}</td>
+                        <td><img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" /></td>
+                        <td><a>${document.getElementsByClassName("wob_t")[0].innerHTML}Cº</a></td>
+                      </tr>
+                    </table>`;
+
+            
+            //`<img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" />` + 
+            //document.getElementsByClassName("VQF4g")[0].innerHTML +
+           // document.getElementsByClassName("wob_t")[0].innerHTML  + " Cº " +
+            //document.getElementsByClassName("wtsRwe")[0].innerHTML;
+            
+            
+            
             //document.getElementsByClassName("VQF4g")[0].innerHTML; //Blumenau SC, sábado. 18:00 Chuva
             //document.getElementsByClassName("wob_t")[0].innerHTML; // Temperatura adicionar Cº
             //document.getElementsByClassName("wtsRwe")[0].innerHTML; //chuva 23% umidade 80% Vento    
