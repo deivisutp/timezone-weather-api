@@ -6,31 +6,6 @@ const url = 'http://books.toscrape.com/catalogue/category/books/mystery_3/index.
 const url2 = 'https://www.google.com/search?q=';
 
 module.exports = {
-
-    async show_puppeteer(req, res) {
-        const { country_name } = req.params;
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto(url2 + country_name + '+tempo');
-       // await page.screenshot({path: 'example.png'}); 
-
-       const pageContent = await page.evaluate(() => {
-            return 
-            //document.getElementsByClassName("VQF4g")[0].innerHTML; //Blumenau SC, sábado. 18:00 Chuva
-            //document.getElementsByClassName("wob_t")[0].innerHTML; // Temperatura adicionar Cº
-            //document.getElementsByClassName("wtsRwe")[0].innerHTML; //chuva 23% umidade 80% Vento    
-        /*return {    html: document.getElementsByClassName("nawv0d")[0].innerHTML,
-                        temperatura: document.getElementsByClassName("wob_t")[0].innerHTML//Temperatura
-            }; */
-       });
-        
-       console.log('pageContent: ', pageContent);
-
-       await browser.close();
-
-       res.send(pageContent);
-    },
-
     async show(req, res) { 
         const { country_name } = req.params;
         const browser = await puppeteer.launch();
