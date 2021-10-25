@@ -59,9 +59,7 @@ module.exports = {
             //document.getElementsByClassName("wob_t")[0].innerHTML; // Temperatura adicionar Cº
             //document.getElementsByClassName("wtsRwe")[0].innerHTML; //chuva 23% umidade 80% Vento    
         }).catch(err => console.log(err));
-        
-        console.log('pageContent: ', pageContent);
-       
+
         await browser.close();
         res.send(pageContent);
     },
