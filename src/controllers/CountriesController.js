@@ -22,7 +22,7 @@ module.exports = {
                       <tr>
                         <td>${document.getElementsByClassName("VQF4g")[0].innerHTML}</td>
                         <td><img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" /></td>
-                        <td><a>${document.getElementsByClassName("wob_t")[0].innerHTML}Cº</a></td>
+                        <td><a>${document.getElementsByClassName("wob_t q8U8x")[0].innerHTML}Cº</a></td>
                       </tr>
                     </table>`;
 
