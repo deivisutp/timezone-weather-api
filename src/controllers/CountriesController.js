@@ -14,7 +14,7 @@ module.exports = {
         }
 
         const { country_name } = req.params;
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
         const page = await browser.newPage();
         await page.goto(url2 + country_name + '+tempo').catch(err => console.log(err));
         // await page.screenshot({path: 'example.png'});
