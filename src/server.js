@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const serverless = require("serverless-http");
 const express = require("express");
 const path = require("path");
 const cors = require('cors');
@@ -18,4 +19,5 @@ app.use(
 );
 app.use(appRoutes);
 
-app.listen(process.env.PORT || 3333);
+module.exports.handler = serverless(app);
+//app.listen(process.env.PORT || 3333);

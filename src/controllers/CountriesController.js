@@ -5,8 +5,14 @@ const puppeteer = require("puppeteer");
 const url = 'http://books.toscrape.com/catalogue/category/books/mystery_3/index.html';
 const url2 = 'https://www.google.com/search?q=';
 
+let cached = null;
+
 module.exports = {
     async show(req, res) { 
+        if (cached) { 
+            return res.send(cached);
+        }
+
         const { country_name } = req.params;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
@@ -36,7 +42,9 @@ module.exports = {
         }).catch(err => console.log(err));
 
         await browser.close();
-        res.send(pageContent);
+
+        cached = pageContent;
+        return res.send(pageContent);
     },
 
     async show_book(req, res) {
