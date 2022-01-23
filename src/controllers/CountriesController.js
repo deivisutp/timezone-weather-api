@@ -26,7 +26,7 @@ module.exports = {
                       <tr>
                         <td>${document.getElementsByClassName("VQF4g")[0].innerHTML}</td>
                         <td><img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" /></td>
-                        <td><a>${((parseInt(document.getElementsByClassName("wob_t")[0].innerHTML) - 32)*5/9)}Cº</a></td>
+                        <td><a>${Math.round((((parseInt(document.getElementsByClassName("wob_t")[0].innerHTML) - 32)*5)/9))}Cº</a></td>
                       </tr>
                     </table>`;
                     //
