@@ -1,4 +1,5 @@
 require("dotenv").config();
+require('events').EventEmitter.defaultMaxListeners = 15;
 
 const express = require("express");
 const path = require("path");
@@ -9,12 +10,15 @@ const app = express();
 
 app.use(cors({
     origin: "*",
-    exposedHeaders: "X-Total-Count"
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
 }));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" );
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     next();
 });
 

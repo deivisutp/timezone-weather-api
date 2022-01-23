@@ -16,16 +16,17 @@ module.exports = {
         const page = await browser.newPage();
         await page.goto(url2 + country_name + '+tempo').catch(err => console.log(err));
         // await page.screenshot({path: 'example.png'});
-
+        
         const pageContent = await page.evaluate(() => {
+            
             return `<table>
                       <tr>
                         <td>${document.getElementsByClassName("VQF4g")[0].innerHTML}</td>
                         <td><img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" /></td>
-                        <td><a>${document.getElementsByClassName("wob_t q8U8x")[0].innerHTML}Cº</a></td>
+                        <td><a>${document.getElementById("wob_tm").innerText}Cº</a></td>
                       </tr>
                     </table>`;
-
+                    //<td><a>${document.getElementsByClassName("wob_t q8U8x")[0].innerHTML}Cº</a></td>
             
             //`<img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" />` + 
             //document.getElementsByClassName("VQF4g")[0].innerHTML +
