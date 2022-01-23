@@ -16,17 +16,20 @@ module.exports = {
         const page = await browser.newPage();
         await page.goto(url2 + country_name + '+tempo').catch(err => console.log(err));
         // await page.screenshot({path: 'example.png'});
-        
+
+        const amb = process.env.AMB === "TEST";
         const pageContent = await page.evaluate(() => {
-            
+            //var temperture = amb ? 
+             //                   document.getElementsByClassName("wob_t")[0].innerHTML
+                                 // : ((parseInt(document.getElementsByClassName("wob_t")[0].innerHTML) - 32)*5/9);
             return `<table>
                       <tr>
                         <td>${document.getElementsByClassName("VQF4g")[0].innerHTML}</td>
                         <td><img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" /></td>
-                        <td><a>${document.getElementById("wob_tm").innerText}Cº</a></td>
+                        <td><a>${((parseInt(document.getElementsByClassName("wob_t")[0].innerHTML) - 32)*5/9)}Cº</a></td>
                       </tr>
                     </table>`;
-                    //<td><a>${document.getElementsByClassName("wob_t q8U8x")[0].innerHTML}Cº</a></td>
+                    //
             
             //`<img src="${document.getElementsByClassName("UQt4rd")[0].querySelector("img").getAttribute("src")}" />` + 
             //document.getElementsByClassName("VQF4g")[0].innerHTML +
